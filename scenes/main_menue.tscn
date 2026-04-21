@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://b6q83p4mw2h3k"]
 
 [node name="MainMenue" type="Node2D" unique_id=277688739]
+
+[node name="VSplitContainer" type="VSplitContainer" parent="." unique_id=1505628957]
+offset_left = 509.0
+offset_top = 297.0
+offset_right = 575.0
+offset_bottom = 363.0
+
+[node name="Label" type="Label" parent="VSplitContainer" unique_id=870724682]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Tux Tower Defense"
+
+[node name="Button" type="Button" parent="VSplitContainer" unique_id=1857818396]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "buttom"
