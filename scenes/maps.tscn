@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bclsyi5tesoa6"]
+
+[ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="1_0cqs5"]
+
+[node name="Maps" type="Node2D" unique_id=1572136194]
+
+[node name="Maps" type="Label" parent="." unique_id=818801855]
+offset_left = 414.0
+offset_top = 53.0
+offset_right = 745.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("1_0cqs5")
+theme_override_font_sizes/font_size = 90
+text = "Maps"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="." unique_id=1670017009]
+offset_left = 11.0
+offset_top = 235.0
+offset_right = 19.0
+offset_bottom = 243.0
+
+[node name="Touch_Grass" type="VSplitContainer" parent="HScrollBar" unique_id=430410367]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+split_offsets = PackedInt32Array(36, 64)
+split_offset = 36
+
+[node name="Difficulty" type="Label" parent="HScrollBar/Touch_Grass" unique_id=990161696]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0cqs5")
+theme_override_font_sizes/font_size = 30
+text = "Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="HScrollBar/Touch_Grass" unique_id=1519667069]
+layout_mode = 2
+tooltip_text = "left = easy
+right = hard"
+max_value = 2.0
+
+[node name="Name" type="Label" parent="HScrollBar/Touch_Grass" unique_id=1491912773]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0cqs5")
+theme_override_font_sizes/font_size = 40
+text = "Touch Grass"
+horizontal_alignment = 1
+vertical_alignment = 1
