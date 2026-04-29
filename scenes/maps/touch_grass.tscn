@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://dk416bxo8eyjr"]
 
+[ext_resource type="Script" uid="uid://bx25y2n2hpeq5" path="res://scripts/Game.cs" id="1_m6cpq"]
+
 [node name="Touch_Grass" type="Node2D" unique_id=950179972]
+script = ExtResource("1_m6cpq")
