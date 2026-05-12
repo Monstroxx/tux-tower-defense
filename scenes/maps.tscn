@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bclsyi5tesoa6"]
 
 [ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="1_0cqs5"]
+[ext_resource type="PackedScene" uid="uid://dk416bxo8eyjr" path="res://scenes/maps/touch_grass.tscn" id="2_3gnvq"]
 
 [node name="Maps" type="Node2D" unique_id=1572136194]
 
@@ -16,19 +17,38 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HScrollBar" type="HScrollBar" parent="." unique_id=1670017009]
-offset_left = 11.0
-offset_top = 235.0
-offset_right = 19.0
-offset_bottom = 243.0
+offset_left = 14.0
+offset_top = 399.0
+offset_right = 22.0
+offset_bottom = 407.0
 
-[node name="Touch_Grass" type="VSplitContainer" parent="HScrollBar" unique_id=430410367]
-layout_mode = 0
+[node name="Touch_Grass" type="Control" parent="HScrollBar" unique_id=171401526]
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-split_offsets = PackedInt32Array(36, 64)
-split_offset = 36
 
-[node name="Difficulty" type="Label" parent="HScrollBar/Touch_Grass" unique_id=990161696]
+[node name="ColorRect" type="ColorRect" parent="HScrollBar/Touch_Grass" unique_id=1300897904]
+z_index = -1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -171.00002
+offset_right = 35.0
+offset_bottom = -131.00002
+scale = Vector2(6.149829, 6.8489513)
+color = Color(0.50140655, 0.5014065, 0.5014065, 0.59607846)
+
+[node name="SplitContainer" type="VSplitContainer" parent="HScrollBar/Touch_Grass" unique_id=430410367]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 103.0
+split_offsets = PackedInt32Array(27, 55)
+split_offset = 27
+
+[node name="Touch_Grass" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=950179972 instance=ExtResource("2_3gnvq")]
+position = Vector2(5.000002, -156)
+scale = Vector2(0.19524284, 0.19524284)
+
+[node name="Difficulty" type="Label" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=990161696]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0cqs5")
 theme_override_font_sizes/font_size = 30
@@ -36,13 +56,13 @@ text = "Difficulty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="HScrollBar/Touch_Grass" unique_id=1519667069]
+[node name="HSlider" type="HSlider" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=1519667069]
 layout_mode = 2
 tooltip_text = "left = easy
 right = hard"
 max_value = 2.0
 
-[node name="Name" type="Label" parent="HScrollBar/Touch_Grass" unique_id=1491912773]
+[node name="Name" type="Label" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=1491912773]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0cqs5")
 theme_override_font_sizes/font_size = 40
