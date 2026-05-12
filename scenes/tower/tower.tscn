@@ -13,3 +13,5 @@ shape = SubResource("RectangleShape2D_r21n7")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2002201059]
 texture = ExtResource("1_mg2hd")
+
+[node name="Timer" type="Timer" parent="." unique_id=2045687202]
