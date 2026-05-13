@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bhfq86a355q3"]
+
+[ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="1_nt7q6"]
+
+[node name="UI" type="CanvasLayer" unique_id=1088323262]
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=572418805]
+self_modulate = Color(1, 0.019607844, 0, 1)
+offset_left = 611.0
+offset_top = 610.0
+offset_right = 864.0
+offset_bottom = 649.0
+show_percentage = false
+
+[node name="Coins" type="Label" parent="." unique_id=560397592]
+offset_left = 610.0
+offset_top = 575.0
+offset_right = 649.0
+offset_bottom = 602.0
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 30
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades" type="Panel" parent="." unique_id=1600917752]
+offset_left = 1.0
+offset_top = 391.0
+offset_right = 309.0
+offset_bottom = 646.0
+
+[node name="Label" type="Label" parent="Upgrades" unique_id=1246795670]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 17.0
+offset_right = 215.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 30
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Upgrades" unique_id=30209060]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 75.0
+offset_right = 118.0
+offset_bottom = 180.0
+split_offsets = PackedInt32Array(27, 66)
+split_offset = 27
+
+[node name="Speed" type="Label" parent="Upgrades/VSplitContainer" unique_id=1432072962]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 30
+text = "Speed"
+vertical_alignment = 1
+
+[node name="Strengh" type="Label" parent="Upgrades/VSplitContainer" unique_id=893534972]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 30
+text = "Strengh"
+vertical_alignment = 1
+
+[node name="Impaling" type="Label" parent="Upgrades/VSplitContainer" unique_id=725697312]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 30
+text = "Impaling"
+vertical_alignment = 1

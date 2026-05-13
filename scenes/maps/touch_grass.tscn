@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://csx43jnv7m4yk" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Tileset/Tileset Spring.png" id="2_isml2"]
 [ext_resource type="Texture2D" uid="uid://0h6ek5ssbkde" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Maple Tree.png" id="4_lf34x"]
 [ext_resource type="Texture2D" uid="uid://bxhfyr2ghq5gl" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Road copiar.png" id="5_ua6w1"]
+[ext_resource type="Texture2D" uid="uid://do3vvjo1b8fai" path="res://assets/icon.svg" id="6_ua6w1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hn0x"]
 texture = ExtResource("2_cb475")
@@ -362,3 +363,10 @@ layer_1/tile_data = PackedInt32Array(65547, 262146, 0, 65551, 262146, 0, 65595, 
 
 [node name="Path2D" type="Path2D" parent="." unique_id=996007164]
 curve = SubResource("Curve2D_lf34x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=572945996]
+position = Vector2(-14, 127)
+
+[node name="Icon" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=223254912]
+position = Vector2(1, -2)
+texture = ExtResource("6_ua6w1")
