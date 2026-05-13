@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dymlr2jpap45u"]
+
+[ext_resource type="Script" uid="uid://dfnoq4ye1a27r" path="res://scripts/Enemie.cs" id="1_kaca8"]
+[ext_resource type="Texture2D" uid="uid://bxl1bre3e760f" path="res://assets/enemie/Win10.png" id="1_r8wrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaca8"]
+size = Vector2(30, 30)
+
+[node name="Enemie" type="Area2D" unique_id=295678720]
+script = ExtResource("1_kaca8")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1608035948]
+shape = SubResource("RectangleShape2D_kaca8")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=579360828]
+texture = ExtResource("1_r8wrs")
