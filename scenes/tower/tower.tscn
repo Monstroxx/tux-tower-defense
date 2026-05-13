@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://c7gw0g72dumxm"]
 
 [ext_resource type="Texture2D" uid="uid://cjti2gj5lxlv" path="res://assets/tower/Ubuntu.png" id="1_mg2hd"]
-[ext_resource type="Script" uid="uid://b7hivmiobg4tr" path="res://scenes/tower/Tower.cs" id="1_r21n7"]
+[ext_resource type="Script" uid="uid://b7hivmiobg4tr" path="res://scripts/Tower.cs" id="1_r21n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r21n7"]
 size = Vector2(30, 30)
 
-[node name="Tower" type="Area2D" unique_id=197713780]
+[node name="Tower" type="Area2D" unique_id=197713780 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_r21n7")
+sprite = NodePath("Sprite")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=2043245352]
 shape = SubResource("RectangleShape2D_r21n7")
