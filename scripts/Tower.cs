@@ -31,6 +31,6 @@ public partial class Tower : StaticBody2D
 
 	public virtual void shootTimerUp()
 	{
-		
+		GD.Print("Piew!");
 	}
 }
