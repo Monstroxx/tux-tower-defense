@@ -6,11 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kaca8"]
 size = Vector2(30, 30)
 
-[node name="Enemie" type="Area2D" unique_id=295678720]
+[node name="Enemie" type="PathFollow2D" unique_id=364058408]
 script = ExtResource("1_kaca8")
-
-[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1608035948]
-shape = SubResource("RectangleShape2D_kaca8")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=579360828]
 texture = ExtResource("1_r8wrs")
+
+[node name="Area" type="Area2D" parent="." unique_id=1930401942]
+collision_layer = 3
+collision_mask = 3
+
+[node name="HitBox" type="CollisionShape2D" parent="Area" unique_id=1608035948]
+shape = SubResource("RectangleShape2D_kaca8")

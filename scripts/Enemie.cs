@@ -1,12 +1,9 @@
 using Godot;
 using System;
 
-public partial class Enemie : Area2D
+public partial class Enemie : PathFollow2D
 {
-	public Path2D path;
-	private int nextTarget = 0;
-
-	public float speed = 1;
+	public float speed = 100;
 
 	public override void _Ready()
 	{
@@ -14,6 +11,6 @@ public partial class Enemie : Area2D
 
 	public override void _Process(double delta)
 	{
-		
+		Progress += speed * (float)delta;
 	}
 }

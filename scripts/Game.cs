@@ -1,27 +1,54 @@
 using Godot;
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 public partial class Game : Node2D
 {
-	public static int Coins = 10;
-	PathFollow2D path_follow_node;
-	Node currentScene;
-	public override void _Ready()
-	{
-		path_follow_node = GetNode<PathFollow2D>("Path2D/PathFollow2D");
-		currentScene = GetTree().CurrentScene;
-	}
-	
-	public override void _Process(double delta)
-	{
-		GetNode<PathFollow2D>("Path2D/PathFollow2D").Progress += 250 * (float)delta;
+    private PackedScene[] possibleEnemies = [GD.Load<PackedScene>("res://scenes/enemies/enemie.tscn")];
 
-	}
-	void spawn_at_point(PathFollow2D path_follow_node, PackedScene scene_to_spawn)
-	{
-		Node2D instance = (Node2D)scene_to_spawn.Instantiate();
-		GetParent().AddChild(instance);
-		instance.GlobalPosition = path_follow_node.GlobalPosition;
-	}
+    public static int Coins = 10;
+
+    [Export]
+    public float StartFrequency = 3;
+
+    [Export]
+    public int EnemysInFirstRound = 5;
+
+    [Export]
+    public float EnemyMultiplyer = 1.15f;
+
+    [Export]
+    public Path2D Path;
+
+    private float maxEnemyCount;
+    private float frequency;
+
+    private readonly List<Enemie> enemies = [];
+
+    private readonly Timer enemieSpawnTimer = new();
+
+	public override void _Ready()
+    {
+        maxEnemyCount = EnemysInFirstRound;
+        frequency = StartFrequency;
+
+        enemieSpawnTimer.WaitTime = frequency;
+
+        enemieSpawnTimer.Autostart = true;
+        enemieSpawnTimer.Ready += SpawnEnemy;
+    }
+    
+    public override void _Process(double delta)
+    {
+        
+    }
+
+    public void SpawnEnemy()
+    {
+        Random rn = new();
+
+        var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
+
+        Path.AddChild(enemy);
+    }
 }

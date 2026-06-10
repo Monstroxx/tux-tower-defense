@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c2cgw4ggf6wbc"]
+
+[ext_resource type="Script" uid="uid://bu3dcam2u45ru" path="res://scripts/Projectile.cs" id="1_b7ftb"]
+[ext_resource type="Texture2D" uid="uid://i0wspjd2epfv" path="res://assets/tower/GoldenDart.png" id="1_cgo8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ftb"]
+size = Vector2(8, 6)
+
+[node name="Projectile" type="Area2D" unique_id=475152244]
+script = ExtResource("1_b7ftb")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1322901951]
+texture = ExtResource("1_cgo8s")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=64742553]
+shape = SubResource("RectangleShape2D_b7ftb")
