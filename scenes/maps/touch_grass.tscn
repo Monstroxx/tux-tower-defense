@@ -4,9 +4,44 @@
 [ext_resource type="Texture2D" uid="uid://325fqmufexmy" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/House.png" id="2_cb475"]
 [ext_resource type="Texture2D" uid="uid://0h6ek5ssbkde" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Maple Tree.png" id="4_lf34x"]
 [ext_resource type="Texture2D" uid="uid://bxhfyr2ghq5gl" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Road copiar.png" id="5_ua6w1"]
+[ext_resource type="Texture2D" uid="uid://4gbyxkfpw435" path="res://assets/Tilemaps/IslandTilemap/tileset_IslandTilemap.png" id="6_st5uu"]
+[ext_resource type="Texture2D" uid="uid://bp2xc6js7mhhd" path="res://assets/Tilemaps/PfadTilemap/tileset_PfadTilemap.png" id="7_eqvb7"]
+[ext_resource type="Texture2D" uid="uid://dhj5xt2gvbh1b" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Fence's copiar.png" id="8_eqvb7"]
+[ext_resource type="Texture2D" uid="uid://cf2ubuvt2jcym" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/chest.png" id="9_de8h7"]
+[ext_resource type="PackedScene" uid="uid://dymlr2jpap45u" path="res://scenes/enemies/enemie.tscn" id="10_de8h7"]
+[ext_resource type="Texture2D" uid="uid://dqp5eitcapn2a" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Spring Crops.png" id="10_i0fkn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hn0x"]
-texture = ExtResource("2_cb475")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1k2rl"]
+texture = ExtResource("6_st5uu")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 1
+0:0/0/terrains_peering_bit/right_side = 1
+0:0/0/terrains_peering_bit/bottom_right_corner = 1
+0:0/0/terrains_peering_bit/bottom_side = 1
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/terrains_peering_bit/right_side = 1
+1:0/0/terrains_peering_bit/bottom_right_corner = 1
+1:0/0/terrains_peering_bit/bottom_side = 1
+1:0/0/terrains_peering_bit/bottom_left_corner = 1
+1:0/0/terrains_peering_bit/left_side = 1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 1
+2:0/0/terrains_peering_bit/bottom_side = 1
+2:0/0/terrains_peering_bit/bottom_left_corner = 1
+2:0/0/terrains_peering_bit/left_side = 1
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 1
+3:0/0/terrains_peering_bit/bottom_side = 1
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 1
+4:0/0/terrains_peering_bit/right_side = 1
+4:0/0/terrains_peering_bit/bottom_side = 1
 5:0/0 = 0
 5:0/0/terrain_set = 0
 5:0/0/terrain = 1
@@ -1030,3 +1065,14 @@ tile_set = SubResource("TileSet_wqyw2")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=996007164]
 curve = SubResource("Curve2D_lf34x")
+
+[node name="Enemie" parent="Path2D" unique_id=364058408 instance=ExtResource("10_de8h7")]
+position = Vector2(-32, 136)
+
+[node name="End" type="Area2D" parent="." unique_id=571007496 groups=["End"]]
+position = Vector2(1216, 344)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End" unique_id=2018627720]
+shape = SubResource("RectangleShape2D_de8h7")

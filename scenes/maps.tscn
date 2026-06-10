@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bclsyi5tesoa6"]
 
-[ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="1_0cqs5"]
+[ext_resource type="FontFile" uid="uid://tjcev1y6rwwi" path="res://assets/gamepocket/GamePocket-Regular-ZeroKern.ttf" id="1_0cqs5"]
 [ext_resource type="PackedScene" uid="uid://dk416bxo8eyjr" path="res://scenes/maps/touch_grass.tscn" id="2_3gnvq"]
 
 [node name="Maps" type="Node2D" unique_id=1572136194]
