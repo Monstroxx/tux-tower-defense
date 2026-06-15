@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bclsyi5tesoa6"]
 
 [ext_resource type="FontFile" uid="uid://tjcev1y6rwwi" path="res://assets/gamepocket/GamePocket-Regular-ZeroKern.ttf" id="1_0cqs5"]
+[ext_resource type="Script" uid="uid://bokxd68cw12kj" path="res://scripts/Scenes/Maps.cs" id="1_px2nk"]
 [ext_resource type="PackedScene" uid="uid://dk416bxo8eyjr" path="res://scenes/maps/touch_grass.tscn" id="2_3gnvq"]
 [ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="3_3cof4"]
 [ext_resource type="Texture2D" uid="uid://cjti2gj5lxlv" path="res://assets/tower/Ubuntu.png" id="4_px2nk"]
 
 [node name="Maps" type="Node2D" unique_id=1572136194]
+script = ExtResource("1_px2nk")
 
 [node name="Maps" type="Label" parent="." unique_id=818801855]
 offset_left = 414.0
@@ -72,7 +74,7 @@ text = "Touch Grass"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" type="Button" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=416679876]
+[node name="Play" type="Button" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=416679876]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -80,3 +82,5 @@ theme_override_fonts/font = ExtResource("3_3cof4")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 icon = ExtResource("4_px2nk")
+
+[connection signal="pressed" from="HScrollBar/Touch_Grass/SplitContainer/Play" to="." method="_on_play_pressed"]

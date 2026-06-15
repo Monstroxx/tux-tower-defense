@@ -22,6 +22,7 @@ project/assembly_name="Tux Tower Defense"
 [global_group]
 
 End="This is a Node that marks the End"
+Enemie=""
 
 [physics]
 

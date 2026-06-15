@@ -12,4 +12,11 @@ public partial class Maps : Node2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public void _on_play_pressed()
+	{
+		GD.Print("Play pressed");
+		Game.IsPlaying = true;
+		GetTree().ChangeSceneToFile("res://scenes/maps/touch_grass.tscn");
+	}
 }

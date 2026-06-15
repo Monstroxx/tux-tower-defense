@@ -7,12 +7,14 @@
 size = Vector2(30, 30)
 
 [node name="Enemie" type="PathFollow2D" unique_id=364058408]
+rotates = false
+loop = false
 script = ExtResource("1_kaca8")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=579360828]
 texture = ExtResource("1_r8wrs")
 
-[node name="Area" type="Area2D" parent="." unique_id=1930401942]
+[node name="Area" type="Area2D" parent="." unique_id=1930401942 groups=["Enemie"]]
 collision_layer = 3
 collision_mask = 3
 
