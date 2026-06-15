@@ -6,12 +6,6 @@ public partial class Tower : Area2D
 {
 	private Timer attackTimer = new();
 
-	public Texture2D SpriteTexture
-	{
-		set {sprite.Texture = value;}
-		get {return sprite.Texture;}
-	}
-
 	public bool Enabled = false;
 
 	public TowerData data;
@@ -19,9 +13,21 @@ public partial class Tower : Area2D
 	[Export]
 	private Sprite2D sprite;
 
+	public void SetTexture(Texture2D texture)
+	{
+		if (sprite != null)
+		{
+			sprite.Texture = texture;
+		} else
+		{
+			GD.Print($"Sprite of {this} is not set");
+		}
+	}
+
 	public override void _Ready()
 	{
-		attackTimer.Timeout += shootTimerUp;
+		attackTimer.Timeout += ShootTimerUp;
+		attackTimer.WaitTime = data.AttackSpeed;
 		attackTimer.Autostart = true;
 		AddChild(attackTimer);
 		attackTimer.Start();
@@ -35,8 +41,20 @@ public partial class Tower : Area2D
 		
 	}
 
-	public virtual void shootTimerUp()
+	public void ShootTimerUp()
 	{
-		GD.Print("Piew!");
+		foreach (var node in GetOverlappingAreas())
+		{
+			if (node.IsInGroup("Enemie") && node.GetParent() is Enemy enemie)
+			{
+				ShootAt(enemie);
+				break;
+			}
+		}
+	}
+
+	public virtual void ShootAt(Enemy enemie)
+	{
+		GD.Print($"Pew to {enemie}");
 	}
 }

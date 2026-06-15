@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b7hivmiobg4tr" path="res://scripts/Object/Tower/Tower.cs" id="1_7m50e"]
 [ext_resource type="Texture2D" uid="uid://rntiys5cu5t7" path="res://assets/tower/Fedora.png" id="2_u7n0l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r21n7"]
-size = Vector2(30, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_7m50e"]
+radius = 250.0
 
 [node name="FedoraTower" type="Area2D" unique_id=197713780 node_paths=PackedStringArray("sprite")]
 collision_layer = 5
@@ -13,7 +13,7 @@ script = ExtResource("1_7m50e")
 sprite = NodePath("Sprite")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=2043245352]
-shape = SubResource("RectangleShape2D_r21n7")
+shape = SubResource("CircleShape2D_7m50e")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2002201059]
 texture = ExtResource("2_u7n0l")

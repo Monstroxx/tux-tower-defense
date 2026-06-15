@@ -13,8 +13,30 @@ public partial class Game : Node2D
     private Tower? currentDragingTower;
     private bool alreadyClicked = false;
 
-    public static int Coins = 10;
-    public static int Health = 100;
+
+
+    private static int coins = 500; // TODO: Set coins back to 10 or 20
+    private static int health = 500;
+
+    // Getter und Setter
+    public static int Coins
+    {
+        get {return coins;}
+        set
+        {
+            if (value >= 0 && value <= 9999)
+                coins = value;
+        }
+    }
+    public static int Health
+    {
+        get {return health;}
+        set
+        {
+            if (value >= 0 && value <= 9999)
+                health = value;
+        }
+    }
 
     public static bool IsPlaying = false;
 
@@ -37,12 +59,15 @@ public partial class Game : Node2D
     public Label CoinLabel;
 
     [Export]
+    public Node2D TowerNode;
+
+    [Export]
     public VBoxContainer TowerSelection;
 
     private float maxEnemyCount;
     private float frequency;
 
-    private readonly List<Enemie> enemies = [];
+    private readonly List<Enemy> enemies = [];
 
     private readonly Timer enemieSpawnTimer = new();
 
@@ -62,10 +87,6 @@ public partial class Game : Node2D
         AddChild(enemieSpawnTimer);
 
         enemieSpawnTimer.Start();
-
-        // Labels
-        HealthLabel.Text = $"Health: {Health}";
-        CoinLabel.Text = $"Coins: {Coins}";
     }
     
     public override void _Process(double delta)
@@ -80,18 +101,22 @@ public partial class Game : Node2D
                 if (alreadyClicked) {
                     currentDragingTower.Enabled = true;
                     currentDragingTower = null;
+
+                    TowerSelection.Hide();
                 }
                 else
                 {
                     alreadyClicked = true;
                 }
             }
-            
         }
         else if (alreadyClicked)
         {
             alreadyClicked = false;
         }
+
+        CoinLabel.Text = $"Coins: {Coins}";
+        HealthLabel.Text = $"Health: {Health}";
     }
 
     public void SpawnEnemy()
@@ -102,9 +127,11 @@ public partial class Game : Node2D
         Random rn = new();
         var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
         Path.AddChild(enemy);
+
+        enemieSpawnTimer.WaitTime *= 0.98;
     }
 
-    public void EnemieFinished(Enemie enemie)
+    public void EnemieFinished(Enemy enemie)
     {
         GD.Print("Enemie got through");
         if (!IsPlaying) return;
@@ -112,7 +139,6 @@ public partial class Game : Node2D
         Path.RemoveChild(enemie);
         enemie.QueueFree();
         Health -= 15;
-        HealthLabel.Text = $"Health: {Health}";
 
         if (Health <= 0)
         {
@@ -135,7 +161,6 @@ public partial class Game : Node2D
             currentDragingTower = tower;
 
             Coins -= 10;
-            CoinLabel.Text = $"Coins: {Coins}";
         }
     }
 
@@ -148,7 +173,6 @@ public partial class Game : Node2D
             currentDragingTower = tower;
 
             Coins -= 20;
-            CoinLabel.Text = $"Coins: {Coins}";
         }
     }
 }

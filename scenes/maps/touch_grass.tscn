@@ -1100,11 +1100,12 @@ _data = {
 }
 point_count = 6
 
-[node name="Touch_Grass" type="Node2D" unique_id=950179972 node_paths=PackedStringArray("Path", "HealthLabel", "CoinLabel", "TowerSelection")]
+[node name="Touch_Grass" type="Node2D" unique_id=950179972 node_paths=PackedStringArray("Path", "HealthLabel", "CoinLabel", "TowerNode", "TowerSelection")]
 script = ExtResource("1_m6cpq")
 Path = NodePath("Path2D")
 HealthLabel = NodePath("HealthLabel")
 CoinLabel = NodePath("CoinLabel")
+TowerNode = NodePath("Tower")
 TowerSelection = NodePath("TowerSelection")
 
 [node name="Map" type="TileMapLayer" parent="." unique_id=369243448]
@@ -1120,6 +1121,8 @@ curve = SubResource("Curve2D_lf34x")
 
 [node name="Enemie" parent="Path2D" unique_id=364058408 instance=ExtResource("10_de8h7")]
 position = Vector2(-32, 136)
+
+[node name="Tower" type="Node2D" parent="." unique_id=2017677576]
 
 [node name="Timer" type="Timer" parent="." unique_id=322321451]
 wait_time = 3.0

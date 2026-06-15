@@ -6,11 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ftb"]
 size = Vector2(8, 6)
 
-[node name="Projectile" type="Area2D" unique_id=475152244]
+[node name="Projectile" type="Area2D" unique_id=475152244 node_paths=PackedStringArray("Notifier")]
 script = ExtResource("1_b7ftb")
+Notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1322901951]
 texture = ExtResource("1_cgo8s")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=64742553]
 shape = SubResource("RectangleShape2D_b7ftb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1425027250]
+rect = Rect2(-4, -3, 8, 6)

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Enemie : PathFollow2D
+public partial class Enemy : PathFollow2D
 {
 	public float speed = 100;
 
