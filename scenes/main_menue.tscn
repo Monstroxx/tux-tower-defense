@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6q83p4mw2h3k"]
 
 [ext_resource type="Texture2D" uid="uid://dlekv1jwo0o87" path="res://assets/Background.png" id="1_blpvt"]
-[ext_resource type="Script" uid="uid://cmi1ijcej80rw" path="res://scripts/MainMenue.cs" id="1_gnign"]
+[ext_resource type="Script" uid="uid://cmi1ijcej80rw" path="res://scripts/Scenes/MainMenue.cs" id="1_gnign"]
 [ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="2_6tihl"]
 
 [node name="MainMenue" type="Node2D" unique_id=277688739]
@@ -21,6 +21,9 @@ split_offsets = PackedInt32Array(0, 0)
 
 [node name="Label" type="Label" parent="VSplitContainer" unique_id=870724682]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 46
 theme_override_fonts/font = ExtResource("2_6tihl")
 theme_override_font_sizes/font_size = 80
 text = "Tux Tower Defense"
@@ -28,12 +31,16 @@ horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="VSplitContainer" unique_id=1857818396]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_6tihl")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="Credits" type="Button" parent="VSplitContainer" unique_id=449708256]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_6tihl")
 theme_override_font_sizes/font_size = 40
 text = "Credits"

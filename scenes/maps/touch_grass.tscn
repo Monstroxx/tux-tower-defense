@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dk416bxo8eyjr"]
 
-[ext_resource type="Script" uid="uid://bx25y2n2hpeq5" path="res://scripts/Game.cs" id="1_m6cpq"]
+[ext_resource type="Script" uid="uid://bx25y2n2hpeq5" path="res://scripts/Scenes/Game.cs" id="1_m6cpq"]
 [ext_resource type="Texture2D" uid="uid://325fqmufexmy" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/House.png" id="2_cb475"]
 [ext_resource type="Texture2D" uid="uid://0h6ek5ssbkde" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Maple Tree.png" id="4_lf34x"]
 [ext_resource type="Texture2D" uid="uid://bxhfyr2ghq5gl" path="res://assets/Farm RPG FREE 16x16 - Tiny Asset Pack/Objects/Road copiar.png" id="5_ua6w1"]

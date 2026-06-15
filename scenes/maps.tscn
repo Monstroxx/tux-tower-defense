@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://tjcev1y6rwwi" path="res://assets/gamepocket/GamePocket-Regular-ZeroKern.ttf" id="1_0cqs5"]
 [ext_resource type="PackedScene" uid="uid://dk416bxo8eyjr" path="res://scenes/maps/touch_grass.tscn" id="2_3gnvq"]
+[ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="3_3cof4"]
+[ext_resource type="Texture2D" uid="uid://cjti2gj5lxlv" path="res://assets/tower/Ubuntu.png" id="4_px2nk"]
 
 [node name="Maps" type="Node2D" unique_id=1572136194]
 
@@ -31,9 +33,9 @@ offset_bottom = 40.0
 z_index = -1
 layout_mode = 0
 offset_left = -5.0
-offset_top = -171.00002
+offset_top = -168.99998
 offset_right = 35.0
-offset_bottom = -131.00002
+offset_bottom = -120.08739
 scale = Vector2(6.149829, 6.8489513)
 color = Color(0.50140655, 0.5014065, 0.5014065, 0.59607846)
 
@@ -41,7 +43,7 @@ color = Color(0.50140655, 0.5014065, 0.5014065, 0.59607846)
 layout_mode = 0
 offset_right = 226.0
 offset_bottom = 103.0
-split_offsets = PackedInt32Array(27, 55)
+split_offsets = PackedInt32Array(27, 55, 0)
 split_offset = 27
 
 [node name="Touch_Grass" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=950179972 instance=ExtResource("2_3gnvq")]
@@ -69,3 +71,12 @@ theme_override_font_sizes/font_size = 40
 text = "Touch Grass"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Credits" type="Button" parent="HScrollBar/Touch_Grass/SplitContainer" unique_id=416679876]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_3cof4")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+icon = ExtResource("4_px2nk")

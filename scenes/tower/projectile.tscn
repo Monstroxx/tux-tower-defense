@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2cgw4ggf6wbc"]
 
-[ext_resource type="Script" uid="uid://bu3dcam2u45ru" path="res://scripts/Projectile.cs" id="1_b7ftb"]
+[ext_resource type="Script" uid="uid://bu3dcam2u45ru" path="res://scripts/Object/Projectile.cs" id="1_b7ftb"]
 [ext_resource type="Texture2D" uid="uid://i0wspjd2epfv" path="res://assets/tower/GoldenDart.png" id="1_cgo8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ftb"]
