@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cjti2gj5lxlv" path="res://assets/tower/Ubuntu.png" id="11_7txus"]
 [ext_resource type="Texture2D" uid="uid://3fxr71nwwc3h" path="res://assets/BurgerMenu.png" id="11_wqyw2"]
 [ext_resource type="Texture2D" uid="uid://rntiys5cu5t7" path="res://assets/tower/Fedora.png" id="12_wqyw2"]
+[ext_resource type="PackedScene" uid="uid://bhfq86a355q3" path="res://scenes/ui.tscn" id="14_cw5bj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1k2rl"]
 texture = ExtResource("6_st5uu")
@@ -1100,11 +1101,10 @@ _data = {
 }
 point_count = 6
 
-[node name="Touch_Grass" type="Node2D" unique_id=950179972 node_paths=PackedStringArray("Path", "HealthLabel", "CoinLabel", "TowerNode", "TowerSelection")]
+[node name="Touch_Grass" type="Node2D" unique_id=950179972 node_paths=PackedStringArray("Path", "Ui", "TowerNode", "TowerSelection")]
 script = ExtResource("1_m6cpq")
 Path = NodePath("Path2D")
-HealthLabel = NodePath("HealthLabel")
-CoinLabel = NodePath("CoinLabel")
+Ui = NodePath("UI")
 TowerNode = NodePath("Tower")
 TowerSelection = NodePath("TowerSelection")
 
@@ -1128,20 +1128,6 @@ position = Vector2(-32, 136)
 wait_time = 3.0
 autostart = true
 
-[node name="HealthLabel" type="Label" parent="." unique_id=1640816279]
-offset_left = 9.0
-offset_top = 7.0
-offset_right = 70.0
-offset_bottom = 30.0
-text = "Health: "
-
-[node name="CoinLabel" type="Label" parent="." unique_id=1765631688]
-offset_left = 9.0
-offset_top = 22.0
-offset_right = 70.0
-offset_bottom = 45.0
-text = "Coins: "
-
 [node name="OpenTowersButton" type="TextureButton" parent="." unique_id=1587369699]
 offset_left = 1076.0
 offset_top = 7.0
@@ -1164,6 +1150,8 @@ texture_normal = ExtResource("11_7txus")
 [node name="FedoraTowerButton" type="TextureButton" parent="TowerSelection" unique_id=249804972]
 layout_mode = 2
 texture_normal = ExtResource("12_wqyw2")
+
+[node name="UI" parent="." unique_id=1088323262 instance=ExtResource("14_cw5bj")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="OpenTowersButton" to="." method="_on_open_towers_button_pressed"]

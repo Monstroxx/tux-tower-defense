@@ -4,175 +4,176 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D
 {
-    private PackedScene[] possibleEnemies = [GD.Load<PackedScene>("res://scenes/enemies/enemie.tscn")];
+	private PackedScene[] possibleEnemies = [GD.Load<PackedScene>("res://scenes/enemies/enemie.tscn")];
 
-    private PackedScene ubuntuTowerScene = GD.Load<PackedScene>("res://scenes/tower/ubuntu_tower.tscn");
-    private PackedScene fedoraTowerScene = GD.Load<PackedScene>("res://scenes/tower/fedora_tower.tscn");
+	private PackedScene ubuntuTowerScene = GD.Load<PackedScene>("res://scenes/tower/ubuntu_tower.tscn");
+	private PackedScene fedoraTowerScene = GD.Load<PackedScene>("res://scenes/tower/fedora_tower.tscn");
 
-    #nullable enable
-    private Tower? currentDragingTower;
-    private bool alreadyClicked = false;
+	#nullable enable
+	private Tower? currentDragingTower;
+	private bool alreadyClicked = false;
 
 
 
-    private static int coins = 500; // TODO: Set coins back to 10 or 20
-    private static int health = 500;
+	private static int coins = 500; // TODO: Set coins back to 10 or 20
+	private static int health = 100;
 
-    // Getter und Setter
-    public static int Coins
-    {
-        get {return coins;}
-        set
-        {
-            if (value >= 0 && value <= 9999)
-                coins = value;
-        }
-    }
-    public static int Health
-    {
-        get {return health;}
-        set
-        {
-            if (value >= 0 && value <= 9999)
-                health = value;
-        }
-    }
+	// Getter und Setter
+	public static int Coins
+	{
+		get {return coins;}
+		set
+		{
+			if (value >= 0 && value <= 9999)
+				coins = value;
+		}
+	}
+	public static int Health
+	{
+		get {return health;}
+		set
+		{
+			if (value >= 0 && value <= 9999)
+				health = value;
+		}
+	}
 
-    public static bool IsPlaying = false;
+	public static bool IsPlaying = false;
 
-    [Export]
-    public float StartFrequency = 3;
+	[Export]
+	public float StartFrequency = 3;
 
-    [Export]
-    public int EnemysInFirstRound = 5;
+	[Export]
+	public int EnemysInFirstRound = 5;
 
-    [Export]
-    public float EnemyMultiplyer = 1.15f;
+	[Export]
+	public float EnemyMultiplyer = 1.15f;
 
-    [Export]
-    public Path2D Path;
+	[Export]
+	public Path2D Path;
 
-    [Export]
-    public Label HealthLabel;
+	[Export]
+	public Ui Ui;
 
-    [Export]
-    public Label CoinLabel;
+	[Export]
+	public Node2D TowerNode;
 
-    [Export]
-    public Node2D TowerNode;
+	[Export]
+	public VBoxContainer TowerSelection;
 
-    [Export]
-    public VBoxContainer TowerSelection;
+	private float maxEnemyCount;
+	private float frequency;
 
-    private float maxEnemyCount;
-    private float frequency;
+	private readonly List<Enemy> enemies = [];
 
-    private readonly List<Enemy> enemies = [];
-
-    private readonly Timer enemieSpawnTimer = new();
+	private readonly Timer enemieSpawnTimer = new();
 
 	public override void _Ready()
-    {
-        maxEnemyCount = EnemysInFirstRound;
-        frequency = StartFrequency;
+	{
+		maxEnemyCount = EnemysInFirstRound;
+		frequency = StartFrequency;
 
-        TowerSelection.Hide();
+		TowerSelection.Hide();
+		if (!IsPlaying)
+		{
+			Ui.Hide();   
+		}
 
-        // EnemieSpawnerTimer
-        enemieSpawnTimer.WaitTime = frequency;
+		// EnemieSpawnerTimer
+		enemieSpawnTimer.WaitTime = frequency;
 
-        enemieSpawnTimer.Autostart = true;
-        enemieSpawnTimer.Timeout += SpawnEnemy;
+		enemieSpawnTimer.Autostart = true;
+		enemieSpawnTimer.Timeout += SpawnEnemy;
 
-        AddChild(enemieSpawnTimer);
+		AddChild(enemieSpawnTimer);
 
-        enemieSpawnTimer.Start();
-    }
-    
-    public override void _Process(double delta)
-    {
-        
-        if (currentDragingTower != null)
-        {
-            currentDragingTower.GlobalPosition = GetGlobalMousePosition();
+		enemieSpawnTimer.Start();
+	}
+	
+	public override void _Process(double delta)
+	{
+		
+		if (currentDragingTower != null)
+		{
+			currentDragingTower.GlobalPosition = GetGlobalMousePosition();
 
-            if (Input.IsMouseButtonPressed(MouseButton.Left))
-            {
-                if (alreadyClicked) {
-                    currentDragingTower.Enabled = true;
-                    currentDragingTower = null;
+			if (Input.IsMouseButtonPressed(MouseButton.Left))
+			{
+				if (alreadyClicked) {
+					currentDragingTower.Enabled = true;
+					currentDragingTower = null;
 
-                    TowerSelection.Hide();
-                }
-                else
-                {
-                    alreadyClicked = true;
-                }
-            }
-        }
-        else if (alreadyClicked)
-        {
-            alreadyClicked = false;
-        }
+					TowerSelection.Hide();
+				}
+				else
+				{
+					alreadyClicked = true;
+				}
+			}
+		}
+		else if (alreadyClicked)
+		{
+			alreadyClicked = false;
+		}
 
-        CoinLabel.Text = $"Coins: {Coins}";
-        HealthLabel.Text = $"Health: {Health}";
-    }
+		Ui.CoinLabel.Text = $"Coins: {Coins}";
+		Ui.HealthBar.Value = health;
+	}
 
-    public void SpawnEnemy()
-    {
-        GD.Print($"Enemie count: {Path.GetChildren().Count}");
-        if (!IsPlaying) return;
+	public void SpawnEnemy()
+	{
+		GD.Print($"Enemie count: {Path.GetChildren().Count}");
+		if (!IsPlaying) return;
 
-        Random rn = new();
-        var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
-        Path.AddChild(enemy);
+		Random rn = new();
+		var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
+		Path.AddChild(enemy);
 
-        enemieSpawnTimer.WaitTime *= 0.98;
-    }
+		enemieSpawnTimer.WaitTime *= 0.98;
+	}
 
-    public void EnemieFinished(Enemy enemie)
-    {
-        GD.Print("Enemie got through");
-        if (!IsPlaying) return;
+	public void EnemieFinished(Enemy enemie)
+	{
+		GD.Print("Enemie got through");
+		if (!IsPlaying) return;
 
-        Path.RemoveChild(enemie);
-        enemie.QueueFree();
-        Health -= 15;
+		Path.RemoveChild(enemie);
+		enemie.QueueFree();
+		Health -= 15;
 
-        if (Health <= 0)
-        {
-            IsPlaying = false;
-            GetTree().ChangeSceneToFile("res://scenes/main_menue.tscn");
-        }
-    }
+		if (Health <= 0)
+		{
+			IsPlaying = false;
+			GetTree().ChangeSceneToFile("res://scenes/main_menue.tscn");
+		}
+	}
 
-    public void _on_open_towers_button_pressed()
-    {
-        TowerSelection.Visible = !TowerSelection.Visible;
-    }
+	public void _on_open_towers_button_pressed()
+	{
+		TowerSelection.Visible = !TowerSelection.Visible;
+	}
 
-    public void _on_ubuntu_tower_button_pressed()
-    {
-        if (Coins >= 10)
-        {
-            var tower = ubuntuTowerScene.Instantiate<Tower>();
-            AddChild(tower);
-            currentDragingTower = tower;
+	public void _on_ubuntu_tower_button_pressed()
+	{
+		if (Coins >= 10)
+		{
+			var tower = ubuntuTowerScene.Instantiate<Tower>();
+			AddChild(tower);
+			currentDragingTower = tower;
 
-            Coins -= 10;
-        }
-    }
+			Coins -= 10;
+		}
+	}
 
-    public void _on_fedora_tower_button_pressed()
-    {
-        if (Coins >= 20)
-        {
-            var tower = fedoraTowerScene.Instantiate<Tower>();
-            AddChild(tower);
-            currentDragingTower = tower;
+	public void _on_fedora_tower_button_pressed()
+	{
+		if (Coins >= 20)
+		{
+			var tower = fedoraTowerScene.Instantiate<Tower>();
+			AddChild(tower);
+			currentDragingTower = tower;
 
-            Coins -= 20;
-        }
-    }
+			Coins -= 20;
+		}
+	}
 }

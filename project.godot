@@ -15,6 +15,10 @@ run/main_scene="uid://b6q83p4mw2h3k"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Tux Tower Defense"
