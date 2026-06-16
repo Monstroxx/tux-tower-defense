@@ -6,6 +6,9 @@ public partial class Tower : Area2D
 {
 	private Timer attackTimer = new();
 
+	// Liste erstellen, um die Projektile zu verwalten
+	public List<Projectile> projectiles = [];
+
 	public bool Enabled = false;
 
 	public TowerData data;
@@ -36,9 +39,19 @@ public partial class Tower : Area2D
 		if (sprite == null) {GD.PrintErr($"Sprite of {this} is not set!"); sprite = GetNode<Sprite2D>("Sprite");}
 	}
 
+	// Listen Verwaltung der Projektile
 	public override void _Process(double delta)
 	{
-		
+		foreach (var projectile in projectiles)
+		{
+			if (!projectile.Notifier.IsOnScreen())
+			{
+				projectiles.Remove(projectile);
+				projectile.QueueFree();
+				continue;
+			}
+			projectile.Position += projectile.Velocity * (float)delta;
+		}
 	}
 
 	public void ShootTimerUp()

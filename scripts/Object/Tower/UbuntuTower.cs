@@ -27,5 +27,7 @@ public partial class UbuntuTower : Tower
 
         enemie.QueueFree();
         Game.Coins += 5;
+
+        projectiles.Add(projectile);
     }
 }

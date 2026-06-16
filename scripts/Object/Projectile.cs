@@ -16,11 +16,11 @@ public partial class Projectile : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position += Velocity * (float)delta;
+		// Position += Velocity * (float)delta;
 
-		if (!Notifier.IsOnScreen())
-		{
-			QueueFree();
-		}
+		// if (!Notifier.IsOnScreen())
+		// {
+		// 	QueueFree();
+		// }
 	}
 }
