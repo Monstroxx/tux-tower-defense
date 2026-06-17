@@ -83,6 +83,7 @@ public partial class Game : Node2D
 		frequency = StartFrequency;
 
 		TowerSelection.Hide();
+		endscreen.Hide();
 		if (!IsPlaying)
 		{
 			Ui.Hide();   
@@ -97,6 +98,8 @@ public partial class Game : Node2D
 		AddChild(enemieSpawnTimer);
 
 		enemieSpawnTimer.Start();
+
+		endscreen.Hide();
 	}
 	
 	public override void _Process(double delta)
@@ -130,7 +133,7 @@ public partial class Game : Node2D
 
 		if (GameOver)
 		{
-			GetTree().ChangeSceneToFile("res://scenes/main_menue.tscn");
+			endscreen.Show();
 		}
 	}
 
@@ -192,5 +195,17 @@ public partial class Game : Node2D
 		AddChild(fedoraTower);
 		currentDragingTower = fedoraTower;
 		Coins -= 10;
+	}
+
+
+	public void _on_enscreen_menue_pressed()
+	{
+		GetTree().ChangeSceneToFile("scenes/main_menue.tscn");
+	}
+
+	public void _on_enscreen_restart_pressed()
+	{
+		var error = GetTree().ReloadCurrentScene();
+		GD.PrintErr(error);
 	}
 }
