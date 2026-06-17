@@ -27,5 +27,7 @@ public partial class FedoraTower : Tower
 
         enemie.QueueFree();
         Game.Coins += 10;
+
+        projectiles.Add(projectile);
     }
 }

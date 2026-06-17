@@ -35,10 +35,16 @@ public partial class Game : Node2D
 		{
 			if (value >= 0 && value <= 9999)
 				health = value;
+			if (value <= 0)
+			{
+				IsPlaying = false;
+				GameOver = true;
+			}
 		}
 	}
 
 	public static bool IsPlaying = false;
+	public static bool GameOver = false;
 
 	[Export]
 	public float StartFrequency = 3;
@@ -118,6 +124,11 @@ public partial class Game : Node2D
 
 		Ui.CoinLabel.Text = $"Coins: {Coins}";
 		Ui.HealthBar.Value = health;
+
+		if (GameOver)
+		{
+			GetTree().ChangeSceneToFile("res://scenes/main_menue.tscn");
+		}
 	}
 
 	public void SpawnEnemy()
@@ -140,12 +151,6 @@ public partial class Game : Node2D
 		Path.RemoveChild(enemie);
 		enemie.QueueFree();
 		Health -= 15;
-
-		if (Health <= 0)
-		{
-			IsPlaying = false;
-			GetTree().ChangeSceneToFile("res://scenes/main_menue.tscn");
-		}
 	}
 
 	public void _on_open_towers_button_pressed()
