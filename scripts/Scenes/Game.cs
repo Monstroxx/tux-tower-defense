@@ -132,7 +132,7 @@ public partial class Game : Node2D
 		var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
 		Path.AddChild(enemy);
 
-		enemieSpawnTimer.WaitTime *= 0.98;
+		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
 	}
 
 	public void EnemieFinished(Enemy enemie)
