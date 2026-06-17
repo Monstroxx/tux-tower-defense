@@ -157,23 +157,32 @@ public partial class Game : Node2D
 	{
 		if (Coins >= 10)
 		{
-			var tower = ubuntuTowerScene.Instantiate<Tower>();
-			AddChild(tower);
-			currentDragingTower = tower;
-
-			Coins -= 10;
+			var tower = ubuntuTowerScene.Instantiate<UbuntuTower>();
+			_on_tower_button_pressed(tower);
 		}
 	}
 
 	public void _on_fedora_tower_button_pressed()
 	{
-		if (Coins >= 20)
+		if (Coins >= 10)
 		{
-			var tower = fedoraTowerScene.Instantiate<Tower>();
-			AddChild(tower);
-			currentDragingTower = tower;
-
-			Coins -= 20;
+			var tower = fedoraTowerScene.Instantiate<FedoraTower>();
+			_on_tower_button_pressed(tower);
 		}
+	}
+	
+	//überladen
+	public void _on_tower_button_pressed(UbuntuTower ubuntuTower)
+	{
+		AddChild(ubuntuTower);
+		currentDragingTower = ubuntuTower;
+		Coins -= 10;
+	}
+
+	public void _on_tower_button_pressed(FedoraTower fedoraTower)
+	{
+		AddChild(fedoraTower);
+		currentDragingTower = fedoraTower;
+		Coins -= 10;
 	}
 }

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpv742dbpd56y"]
 
-[ext_resource type="Script" uid="uid://b7hivmiobg4tr" path="res://scripts/Object/Tower/Tower.cs" id="1_7m50e"]
+[ext_resource type="Script" uid="uid://cdjqqju7715l7" path="res://scripts/Object/Tower/FedoraTower.cs" id="1_7m50e"]
 [ext_resource type="Texture2D" uid="uid://rntiys5cu5t7" path="res://assets/tower/Fedora.png" id="2_u7n0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7m50e"]
