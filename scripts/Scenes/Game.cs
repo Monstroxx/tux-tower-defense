@@ -67,6 +67,9 @@ public partial class Game : Node2D
 	[Export]
 	public VBoxContainer TowerSelection;
 
+	[Export]
+	public VBoxContainer endscreen;
+
 	private float maxEnemyCount;
 	private float frequency;
 

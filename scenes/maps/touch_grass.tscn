@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://3fxr71nwwc3h" path="res://assets/BurgerMenu.png" id="11_wqyw2"]
 [ext_resource type="Texture2D" uid="uid://rntiys5cu5t7" path="res://assets/tower/Fedora.png" id="12_wqyw2"]
 [ext_resource type="PackedScene" uid="uid://bhfq86a355q3" path="res://scenes/ui.tscn" id="14_cw5bj"]
+[ext_resource type="FontFile" uid="uid://qm3q7wdqnc1e" path="res://assets/gamepocket/GamePocket-Regular.ttf" id="15_ur8m2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1k2rl"]
 texture = ExtResource("6_st5uu")
@@ -1152,6 +1153,39 @@ layout_mode = 2
 texture_normal = ExtResource("12_wqyw2")
 
 [node name="UI" parent="." unique_id=1088323262 instance=ExtResource("14_cw5bj")]
+
+[node name="endscreen" type="VBoxContainer" parent="." unique_id=730730972]
+offset_left = 479.0
+offset_top = 271.0
+offset_right = 667.0
+offset_bottom = 372.0
+
+[node name="lost" type="Label" parent="endscreen" unique_id=124908482]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_ur8m2")
+theme_override_font_sizes/font_size = 49
+text = "You died"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="endscreen" unique_id=1146421108]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="endscreen" unique_id=714233098]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("15_ur8m2")
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="menue" type="Button" parent="endscreen" unique_id=159347695]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("15_ur8m2")
+theme_override_font_sizes/font_size = 40
+text = "Menue"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="OpenTowersButton" to="." method="_on_open_towers_button_pressed"]
