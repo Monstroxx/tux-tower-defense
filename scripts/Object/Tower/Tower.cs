@@ -42,14 +42,22 @@ public partial class Tower : Area2D
 	// Listen Verwaltung der Projektile
 	public override void _Process(double delta)
 	{
+		var projectilesToRemove = new List<Projectile>();
 		foreach (var projectile in projectiles)
 		{
 			if (!projectile.Notifier.IsOnScreen())
 			{
-				projectiles.Remove(projectile);
-				projectile.QueueFree();
-				continue;
+				projectilesToRemove.Add(projectile);
 			}
+		}
+		foreach (var projectile in projectilesToRemove)
+		{
+			projectiles.Remove(projectile);
+			projectile.QueueFree();
+			continue;
+		}
+		foreach (var projectile in projectiles)
+		{
 			projectile.Position += projectile.Velocity * (float)delta;
 		}
 	}
