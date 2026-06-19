@@ -149,13 +149,13 @@ public partial class Game : Node2D
 		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
 	}
 
-	public void EnemieFinished(Enemy enemie)
+	public void EnemieFinished(Enemy enemy)
 	{
-		GD.Print("Enemie got through");
+		GD.Print("Enemy got through");
 		if (!IsPlaying) return;
 
-		Path.RemoveChild(enemie);
-		enemie.QueueFree();
+		Path.RemoveChild(enemy);
+		enemy.QueueFree();
 		Health -= 15;
 	}
 

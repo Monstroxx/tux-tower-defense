@@ -3,11 +3,7 @@ using System;
 
 public partial class Enemy : PathFollow2D
 {
-	public float speed = 100;
-
-	public override void _Ready()
-	{
-	}
+	private float speed = 100;
 
 	public override void _Process(double delta)
 	{
