@@ -205,7 +205,24 @@ public partial class Game : Node2D
 
 	public void _on_enscreen_restart_pressed()
 	{
-		var error = GetTree().ReloadCurrentScene();
-		GD.PrintErr(error);
+		GameOver = false;
+		Health = 100;
+		Coins = 500; // Or whatever your starting coin amount is
+		IsPlaying = true;
+
+		// Remove all existing enemies and projectiles before reloading
+		foreach (Node enemy in Path.GetChildren())
+		{
+			enemy.QueueFree();
+		}
+		foreach (Node tower in GetChildren())
+		{
+			if (tower is Tower)
+			{
+				tower.QueueFree();
+			}
+		}
+
+		GetTree().ReloadCurrentScene();
 	}
 }
