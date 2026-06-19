@@ -1192,5 +1192,5 @@ text = "Menue"
 [connection signal="pressed" from="OpenTowersButton" to="." method="_on_open_towers_button_pressed"]
 [connection signal="pressed" from="TowerSelection/UbuntuTowerButton" to="." method="_on_ubuntu_tower_button_pressed"]
 [connection signal="pressed" from="TowerSelection/FedoraTowerButton" to="." method="_on_fedora_tower_button_pressed"]
-[connection signal="pressed" from="endscreen/Restart" to="." method="_on_endscreen_restart_pressed"]
+[connection signal="pressed" from="endscreen/Restart" to="." method="_on_enscreen_restart_pressed"]
 [connection signal="pressed" from="endscreen/menue" to="." method="_on_enscreen_menue_pressed"]
