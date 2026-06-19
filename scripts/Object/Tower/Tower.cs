@@ -43,20 +43,20 @@ public partial class Tower : Area2D
 	public override void _Process(double delta)
 	{
 		var projectilesToRemove = new List<Projectile>();
-		foreach (var projectile in projectiles)
+		foreach (var projectile in projectiles) // Schauen, ob welche entfernt werden muessen
 		{
 			if (!projectile.IsVisible)
 			{
 				projectilesToRemove.Add(projectile);
 			}
 		}
-		foreach (var projectile in projectilesToRemove)
+		foreach (var projectile in projectilesToRemove) // Entfernen
 		{
 			projectiles.Remove(projectile);
 			projectile.QueueFree();
 			continue;
 		}
-		foreach (var projectile in projectiles)
+		foreach (var projectile in projectiles) // Bewegen
 		{
 			projectile.Position += projectile.Velocity * (float)delta;
 		}
