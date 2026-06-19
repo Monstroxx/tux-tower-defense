@@ -13,7 +13,7 @@ public partial class Game : Node2D
 	private Tower? currentDragingTower;
 	private bool alreadyClicked = false;
 
-
+	private List<Tower> towers = [];
 
 	private static int coins = 500; // TODO: Set coins back to 10 or 20
 	private static int health = 100;
