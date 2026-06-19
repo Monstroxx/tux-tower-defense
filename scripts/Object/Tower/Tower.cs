@@ -45,7 +45,7 @@ public partial class Tower : Area2D
 		var projectilesToRemove = new List<Projectile>();
 		foreach (var projectile in projectiles) // Schauen, ob welche entfernt werden muessen
 		{
-			if (!projectile.IsVisible)
+			if (!projectile.IsOnScreen)
 			{
 				projectilesToRemove.Add(projectile);
 			}

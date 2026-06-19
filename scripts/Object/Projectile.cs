@@ -8,7 +8,7 @@ public partial class Projectile : Area2D
 	[Export]
 	private VisibleOnScreenNotifier2D Notifier;
 
-	public bool IsVisible {
+	public bool IsOnScreen {
 		get { return Notifier.IsOnScreen(); }
 	}
 }

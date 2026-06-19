@@ -15,7 +15,7 @@ public partial class Game : Node2D
 
 	private List<Tower> towers = [];
 
-	private static int coins = 500; // TODO: Set coins back to 10 or 20
+	private static int coins = 100;
 	private static int health = 100;
 
 	// Getter und Setter
@@ -166,7 +166,7 @@ public partial class Game : Node2D
 
 	public void _on_ubuntu_tower_button_pressed()
 	{
-		if (Coins >= 10)
+		if (Coins >= 50)
 		{
 			var tower = ubuntuTowerScene.Instantiate<UbuntuTower>();
 			_on_tower_button_pressed(tower);
@@ -175,7 +175,7 @@ public partial class Game : Node2D
 
 	public void _on_fedora_tower_button_pressed()
 	{
-		if (Coins >= 10)
+		if (Coins >= 80)
 		{
 			var tower = fedoraTowerScene.Instantiate<FedoraTower>();
 			_on_tower_button_pressed(tower);
@@ -187,14 +187,14 @@ public partial class Game : Node2D
 	{
 		AddChild(ubuntuTower);
 		currentDragingTower = ubuntuTower;
-		Coins -= 10;
+		Coins -= 50;
 	}
 
 	public void _on_tower_button_pressed(FedoraTower fedoraTower)
 	{
 		AddChild(fedoraTower);
 		currentDragingTower = fedoraTower;
-		Coins -= 10;
+		Coins -= 80;
 	}
 
 
