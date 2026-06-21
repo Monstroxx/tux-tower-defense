@@ -108,9 +108,15 @@ public partial class Game : Node2D
 			tower.MoveProjectiles(delta);
 		}
 
+		List<Enemy> removeEnemies = [];
 		foreach (var enemy in Enemies)
 		{
 			enemy.Move(delta);
+			if (enemy.IsFinished) removeEnemies.Add(enemy);
+		}
+		foreach (var enemy in removeEnemies)
+		{
+			Enemies.Remove(enemy);
 		}
 
 		if (currentDragingTower != null)
@@ -162,7 +168,6 @@ public partial class Game : Node2D
 		//GD.Print("Enemy got through");
 		if (!IsPlaying) return;
 
-		Enemies.Remove(enemy);
 		Path.RemoveChild(enemy);
 		enemy.QueueFree();
 		Health -= 15;
