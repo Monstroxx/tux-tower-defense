@@ -13,8 +13,6 @@ public partial class Game : Node2D
 	private Tower? currentDragingTower;
 	private bool alreadyClicked = false;
 
-	private List<Tower> towers = [];
-
 	private static int coins = 100;
 	private static int health = 100;
 
@@ -74,6 +72,7 @@ public partial class Game : Node2D
 	private float frequency;
 
 	private readonly List<Enemy> enemies = [];
+	private List<Tower> towers = [];
 
 	private readonly Timer enemieSpawnTimer = new();
 
@@ -104,7 +103,16 @@ public partial class Game : Node2D
 	
 	public override void _Process(double delta)
 	{
+		foreach (var tower in towers)
+		{
+			tower.MoveProjectiles(delta);
+		}
 		
+		foreach (var enemy in enemies)
+		{
+			enemy.Move(delta);
+		}
+
 		if (currentDragingTower != null)
 		{
 			currentDragingTower.GlobalPosition = GetGlobalMousePosition();
@@ -112,6 +120,8 @@ public partial class Game : Node2D
 			if (Input.IsMouseButtonPressed(MouseButton.Left))
 			{
 				if (alreadyClicked) {
+					towers.Add(currentDragingTower);
+
 					currentDragingTower.Enabled = true;
 					currentDragingTower = null;
 

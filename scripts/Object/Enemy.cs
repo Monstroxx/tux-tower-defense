@@ -5,7 +5,8 @@ public partial class Enemy : PathFollow2D
 {
 	private float speed = 100;
 
-	public override void _Process(double delta)
+
+	public void Move(double delta)
 	{
 		var lastProgress = Progress;
 

@@ -40,7 +40,7 @@ public partial class Tower : Area2D
 	}
 
 	// Listen Verwaltung der Projektile
-	public override void _Process(double delta)
+	public void MoveProjectiles(double delta)
 	{
 		var projectilesToRemove = new List<Projectile>();
 		foreach (var projectile in projectiles) // Schauen, ob welche entfernt werden muessen
