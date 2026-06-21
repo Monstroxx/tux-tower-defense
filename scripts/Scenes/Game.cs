@@ -162,6 +162,7 @@ public partial class Game : Node2D
 		//GD.Print("Enemy got through");
 		if (!IsPlaying) return;
 
+		Enemies.Remove(enemy);
 		Path.RemoveChild(enemy);
 		enemy.QueueFree();
 		Health -= 15;
@@ -201,7 +202,7 @@ public partial class Game : Node2D
 	public void SpawnObject(Enemy enemy)
 	{
 		Path.AddChild(enemy);
-		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
+		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.96);
 		Enemies.Add(enemy);
 	}
 

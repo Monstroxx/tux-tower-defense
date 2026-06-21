@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public partial class TowerData
 {
-	public static TowerData UbuntuTowerData => new(1, 2);
-	public static TowerData FedoraTowerDate => new(2, 4);
+	public static TowerData UbuntuTowerData => new(3, 2);
+	public static TowerData FedoraTowerDate => new(5, 4);
 
 	private readonly List<Node2D> projectiles = [];
 	public double AttackSpeed {

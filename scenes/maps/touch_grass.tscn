@@ -1145,9 +1145,39 @@ scale = Vector2(4, 4)
 layout_mode = 2
 texture_normal = ExtResource("11_7txus")
 
+[node name="costs" type="Label" parent="TowerSelection/UbuntuTowerButton" unique_id=1123882751]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 98.0
+offset_bottom = 97.0
+scale = Vector2(0.12, 0.12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 46
+theme_override_fonts/font = ExtResource("15_ur8m2")
+theme_override_font_sizes/font_size = 80
+text = "50"
+horizontal_alignment = 1
+
 [node name="FedoraTowerButton" type="TextureButton" parent="TowerSelection" unique_id=249804972]
 layout_mode = 2
 texture_normal = ExtResource("12_wqyw2")
+
+[node name="costs" type="Label" parent="TowerSelection/FedoraTowerButton" unique_id=1136258304]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 98.0
+offset_bottom = 97.0
+scale = Vector2(0.12, 0.12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 46
+theme_override_fonts/font = ExtResource("15_ur8m2")
+theme_override_font_sizes/font_size = 80
+text = "80"
+horizontal_alignment = 1
 
 [node name="UI" parent="." unique_id=1088323262 instance=ExtResource("14_cw5bj")]
 
