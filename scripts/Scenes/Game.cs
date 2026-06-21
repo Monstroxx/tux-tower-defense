@@ -154,11 +154,7 @@ public partial class Game : Node2D
 
 		Random rn = new();
 		var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate<Enemy>();
-		Path.AddChild(enemy);
-
-		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
-
-		Enemies.Add(enemy);
+		SpawnObject(enemy);
 	}
 
 	public void EnemieFinished(Enemy enemy)
@@ -181,7 +177,7 @@ public partial class Game : Node2D
 		if (Coins >= 50)
 		{
 			var tower = ubuntuTowerScene.Instantiate<UbuntuTower>();
-			_on_tower_button_pressed(tower);
+			SpawnObject(tower, 50);
 		}
 	}
 
@@ -190,23 +186,23 @@ public partial class Game : Node2D
 		if (Coins >= 80)
 		{
 			var tower = fedoraTowerScene.Instantiate<FedoraTower>();
-			_on_tower_button_pressed(tower);
+			SpawnObject(tower, 80);
 		}
 	}
-	
-	//überladen
-	public void _on_tower_button_pressed(UbuntuTower ubuntuTower)
+
+	// Überladen
+	public void SpawnObject(Tower tower, int costs)
 	{
-		AddChild(ubuntuTower);
-		currentDragingTower = ubuntuTower;
-		Coins -= 50;
+		AddChild(tower);
+		currentDragingTower = tower;
+		Coins -= costs;
 	}
 
-	public void _on_tower_button_pressed(FedoraTower fedoraTower)
+	public void SpawnObject(Enemy enemy)
 	{
-		AddChild(fedoraTower);
-		currentDragingTower = fedoraTower;
-		Coins -= 80;
+		Path.AddChild(enemy);
+		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
+		Enemies.Add(enemy);
 	}
 
 
