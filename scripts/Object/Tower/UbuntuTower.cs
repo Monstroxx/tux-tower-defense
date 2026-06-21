@@ -16,18 +16,19 @@ public partial class UbuntuTower : Tower
         base._Ready();
     }
 
-    public override void ShootAt(Enemy enemie)
+    public override void ShootAt(Enemy enemy)
     {
         if (!Enabled) return;
 
         var projectile = projectileScene.Instantiate<Projectile>();
-        projectile.Velocity = (enemie.GlobalPosition - GlobalPosition).Normalized() * 1000;
+        projectile.Velocity = (enemy.GlobalPosition - GlobalPosition).Normalized() * 1000;
         projectile.Scale = new Vector2(4,4);
         AddChild(projectile);
 
-        enemie.QueueFree();
         Game.Coins += 5;
 
         projectiles.Add(projectile);
+
+        base.ShootAt(enemy);
     }
 }

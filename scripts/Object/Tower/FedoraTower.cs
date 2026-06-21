@@ -16,18 +16,19 @@ public partial class FedoraTower : Tower
         base._Ready();
     }
 
-    public override void ShootAt(Enemy enemie)
+    public override void ShootAt(Enemy enemy)
     {
         if (!Enabled) return;
 
         var projectile = projectileScene.Instantiate<Projectile>();
-        projectile.Velocity = (enemie.GlobalPosition - GlobalPosition).Normalized() * 1500;
+        projectile.Velocity = (enemy.GlobalPosition - GlobalPosition).Normalized() * 1500;
         projectile.Scale = new Vector2(2,2);
         AddChild(projectile);
 
-        enemie.QueueFree();
         Game.Coins += 10;
 
         projectiles.Add(projectile);
+
+        base.ShootAt(enemy);
     }
 }

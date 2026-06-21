@@ -66,13 +66,13 @@ public partial class Game : Node2D
 	public VBoxContainer TowerSelection;
 
 	[Export]
-	public VBoxContainer endscreen;
+	public VBoxContainer Endscreen;
 
 	private float maxEnemyCount;
 	private float frequency;
 
-	private readonly List<Enemy> enemies = [];
-	private List<Tower> towers = [];
+	public static List<Enemy> Enemies = [];
+	public static List<Tower> Towers = [];
 
 	private readonly Timer enemieSpawnTimer = new();
 
@@ -82,7 +82,7 @@ public partial class Game : Node2D
 		frequency = StartFrequency;
 
 		TowerSelection.Hide();
-		endscreen.Hide();
+		Endscreen.Hide();
 		if (!IsPlaying)
 		{
 			Ui.Hide();   
@@ -98,17 +98,17 @@ public partial class Game : Node2D
 
 		enemieSpawnTimer.Start();
 
-		endscreen.Hide();
+		Endscreen.Hide();
 	}
 	
 	public override void _Process(double delta)
 	{
-		foreach (var tower in towers)
+		foreach (var tower in Towers)
 		{
 			tower.MoveProjectiles(delta);
 		}
-		
-		foreach (var enemy in enemies)
+
+		foreach (var enemy in Enemies)
 		{
 			enemy.Move(delta);
 		}
@@ -120,7 +120,7 @@ public partial class Game : Node2D
 			if (Input.IsMouseButtonPressed(MouseButton.Left))
 			{
 				if (alreadyClicked) {
-					towers.Add(currentDragingTower);
+					Towers.Add(currentDragingTower);
 
 					currentDragingTower.Enabled = true;
 					currentDragingTower = null;
@@ -143,25 +143,27 @@ public partial class Game : Node2D
 
 		if (GameOver)
 		{
-			endscreen.Show();
+			Endscreen.Show();
 		}
 	}
 
 	public void SpawnEnemy()
 	{
-		GD.Print($"Enemie count: {Path.GetChildren().Count}");
+		//GD.Print($"Enemie count: {Path.GetChildren().Count}");
 		if (!IsPlaying) return;
 
 		Random rn = new();
-		var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate();
+		var enemy = possibleEnemies[rn.NextInt64(0,possibleEnemies.Length - 1)].Instantiate<Enemy>();
 		Path.AddChild(enemy);
 
 		enemieSpawnTimer.WaitTime = Math.Max(0.1, enemieSpawnTimer.WaitTime * 0.98);
+
+		Enemies.Add(enemy);
 	}
 
 	public void EnemieFinished(Enemy enemy)
 	{
-		GD.Print("Enemy got through");
+		//GD.Print("Enemy got through");
 		if (!IsPlaying) return;
 
 		Path.RemoveChild(enemy);

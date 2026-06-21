@@ -76,6 +76,7 @@ public partial class Tower : Area2D
 
 	public virtual void ShootAt(Enemy enemie)
 	{
-		GD.Print($"Pew to {enemie}");
+		enemie.QueueFree();
+		Game.Enemies.Remove(enemie);
 	}
 }
